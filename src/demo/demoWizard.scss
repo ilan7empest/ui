@@ -1,0 +1,60 @@
+@import '~igz-controls/scss/colors';
+
+.demo-wizard {
+  line-height: 20px;
+
+  p {
+    margin: 0 0 10px;
+  }
+
+  .form-row {
+    flex-flow: wrap;
+
+    &.resources-units {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 15px;
+      padding: 0;
+
+      .resources-card {
+        min-width: 280px;
+        width: 100%;
+        padding: 16px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+
+        &__title {
+          color: #4b4760;
+          font-weight: 700;
+          font-size: 18px;
+        }
+
+        &__fields {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          margin-top: 13px;
+
+          &-input {
+            min-width: 115px;
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .form-table {
+    .form-table__action-row {
+      button {
+        &:disabled {
+          color: $spunPearl;
+
+          svg rect {
+            fill: $spunPearl;
+          }
+        }
+      }
+    }
+  }
+}
