@@ -18,10 +18,10 @@
   }
 
   &__item {
-    margin: 0 24px 0 0;
+    margin: 0 10px 0 0;
     color: $topaz;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1;
     text-align: center;
     text-transform: capitalize;
@@ -81,6 +81,19 @@
         path {
           fill: $cornflowerBlue;
         }
+      }
+    }
+
+    &_disabled {
+      color: $topaz;
+
+      a {
+        color: $topaz;
+        cursor: not-allowed;
+      }
+
+      &::after {
+        border-color: transparent;
       }
     }
 

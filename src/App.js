@@ -49,6 +49,8 @@ import 'reactflow/dist/style.css'
 import 'igz-controls/scss/common.scss'
 import './scss/main.scss'
 
+const Demo = lazyRetry(() => import('./demo/pages/Demo'))
+
 const Page = lazyRetry(() => import('./layout/Page/Page'))
 const CreateJobPage = lazyRetry(() => import('./components/CreateJobPage/CreateJobPage'))
 const Datasets = lazyRetry(() => import('./components/Datasets/Datasets'))
@@ -116,6 +118,8 @@ const App = () => {
                 />
               }
             >
+              <Route path="projects/:projectName/demo" element={<Demo />} />
+
               <Route path="projects" element={<Projects />} />
 
               <Route path="projects/:projectName" element={<Navigate replace to="monitor" />} />

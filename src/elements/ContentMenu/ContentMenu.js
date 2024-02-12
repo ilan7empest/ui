@@ -39,27 +39,31 @@ const ContentMenu = ({ activeTab, screen, tabs, onClick }) => {
         {tabs.map(tab => {
           const tabClassNames = classnames(
             'content-menu__item',
-            tab.id === activeTab && 'content-menu__item_active'
+            tab.id === activeTab && 'content-menu__item_active',
+            tab.disabled && 'content-menu__item_disabled'
           )
-
           return (
             !tab.hidden && (
               <li data-testid={tab.id} className={tabClassNames} key={tab.id}>
-                <Link
-                  to={
-                    onClick
-                      ? '/'
-                      : `/projects/${params.projectName}/${screen.toLowerCase()}/${tab.id}`
-                  }
-                  className={tab.icon && 'content-menu__item-icon'}
-                  onClick={onClick && (e => handleClick(e, tab.id))}
-                >
-                  {tab.icon && <i>{tab.icon}</i>}
-                  {tab.label ?? tab.id}
-                  {window.mlrunConfig.betaMode === 'enabled' && tab.preview && (
-                    <span className="content-menu__item__preview"> (Beta)</span>
-                  )}
-                </Link>
+                {tab.disabled ? (
+                  <span>{tab.label}</span>
+                ) : (
+                  <Link
+                    to={
+                      onClick
+                        ? '/'
+                        : `/projects/${params.projectName}/${screen.toLowerCase()}/${tab.id}`
+                    }
+                    className={tab.icon && 'content-menu__item-icon'}
+                    onClick={onClick && (e => handleClick(e, tab.id))}
+                  >
+                    {tab.icon && <i>{tab.icon}</i>}
+                    {tab.label ?? tab.id}
+                    {window.mlrunConfig.betaMode === 'enabled' && tab.preview && (
+                      <span className="content-menu__item__preview"> (Beta)</span>
+                    )}
+                  </Link>
+                )}
               </li>
             )
           )
