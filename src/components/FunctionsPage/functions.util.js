@@ -216,14 +216,8 @@ export const generateActionsMenu = (
   apiGateways
 ) => {
   const functionIsDeleting = isFunctionDeleting(func, deletingFunctions)
-  const getFullFunction = (funcMin) => {
-    return chooseOrFetchFunction(
-      selectedFunction,
-      dispatch,
-      fetchFunction,
-      funcMin,
-      apiGateways
-    )
+  const getFullFunction = funcMin => {
+    return chooseOrFetchFunction(selectedFunction, dispatch, fetchFunction, funcMin, apiGateways)
   }
 
   return [
@@ -263,17 +257,17 @@ export const generateActionsMenu = (
           !FUNCTIONS_EDITABLE_STATES.includes(func?.state?.value)
       },
       {
+        label: 'View YAML',
+        icon: <Yaml />,
+        disabled: functionIsDeleting,
+        onClick: funcMin => getFullFunction(funcMin).then(func => toggleConvertedYaml(func))
+      },
+      {
         label: 'Delete',
         icon: <Delete />,
         className: 'danger',
         disabled: functionIsDeleting,
         onClick: onRemoveFunction
-      },
-      {
-        label: 'View YAML',
-        icon: <Yaml />,
-        disabled: functionIsDeleting,
-        onClick: (funcMin) => getFullFunction(funcMin).then((func) => toggleConvertedYaml(func))
       }
     ],
     [
