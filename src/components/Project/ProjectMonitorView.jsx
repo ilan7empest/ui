@@ -62,8 +62,8 @@ const ProjectMonitorView = ({
   showFunctionsPanel
 }) => {
   return (
-    <div className="project-wrapper">
-      <div className="project__header">
+    <div className="content-wrapper">
+      <div className="content__header">
         <Breadcrumbs />
       </div>
       {project.loading ? (
