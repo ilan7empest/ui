@@ -67,18 +67,18 @@ const FunctionsView = ({
   isDemoMode,
   pageData,
   paginationConfigFunctionsRef,
+  params,
   requestErrorMessage,
   selectedFunction,
   setSearchFunctionsParams,
   tableContent
 }) => {
-  const params = useParams()
 
   return (
     <>
       <div className="content-wrapper">
         <div className="content__header">
-          <Breadcrumbs />
+          <Breadcrumbs params={params.funcName} />
         </div>
         <div className="content">
           <div className="table-container">
@@ -221,6 +221,7 @@ FunctionsView.propTypes = {
   isDemoMode: PropTypes.bool.isRequired,
   pageData: PropTypes.object.isRequired,
   paginationConfigFunctionsRef: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired,
   requestErrorMessage: PropTypes.string.isRequired,
   selectedFunction: PropTypes.object.isRequired,
   setSearchFunctionsParams: PropTypes.func.isRequired,
